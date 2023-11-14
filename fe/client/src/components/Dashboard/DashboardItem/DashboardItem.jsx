@@ -4,6 +4,7 @@ export const DashboardItem = ({
     id,
     image,
     title,
+    description
 }) => {
 
   const truncatedTitle = title.length > 10 ? `${title.slice(0, 10)}...` : title;
