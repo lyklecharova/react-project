@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.css'; 
 
 import styles from './Register.module.css'
 export const Register = () => {
@@ -35,7 +36,7 @@ export const Register = () => {
                 <label htmlFor="username" className={styles['login-form-label']}>Username</label>
 
                 <div className={styles['input-container']}>
-                    <FontAwesomeIcon icon={faUser} className={styles['icon-user']} />
+                <FontAwesomeIcon icon={faUser} className={styles['user-icon']} />
                 </div>
 
                 <input
@@ -54,7 +55,7 @@ export const Register = () => {
                 <label htmlFor="email" className={styles['login-form-label']}>Email</label>
 
                 <div className={styles['input-container']}>
-                    <FontAwesomeIcon icon={faEnvelope} className={styles['icon-user']} />
+                <FontAwesomeIcon icon={faEnvelope} className={styles['email-icon']} />
                 </div>
 
                 <input
@@ -73,7 +74,7 @@ export const Register = () => {
                 <label htmlFor="password" className={styles['login-form-label']}>Password</label>
 
                 <div className={styles['input-container']}>
-                    <FontAwesomeIcon icon={faUnlockAlt} className={styles['icon-password']} />
+                <FontAwesomeIcon icon={faUnlock} className={styles['unlock-password']} />
                 </div>
 
                 <input type="password"
@@ -91,7 +92,7 @@ export const Register = () => {
                 <label htmlFor="confirm_password" className={styles['login-form-label']}>Confirm Password</label>
 
                 <div className={styles['input-container']}>
-                    <FontAwesomeIcon icon={faLock} className={styles['icon-password']} />
+                <FontAwesomeIcon icon={faLock} className={styles['lock-password-icon']} />
                 </div>
 
                 <input

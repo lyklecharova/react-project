@@ -79,24 +79,12 @@
 }
 
 
-.icon-user {
-    position: absolute;
-    right: 147px;
-    padding-top: 65px;
-    color: orange;
-    font-size: 22px;
-    margin-right: 12px;
-    transform: translateY(-50%);
-}
-
-
-
-.icon-password {
-    position: absolute;
-    right: 147px;
-    padding-top: 65px;
-    color: orange;
-    font-size: 25px;
-    margin-right: 12px;
-    transform: translateY(-50%);
+.user-icon,
+.unlock-password,
+.lock-password-icon,
+.password-icon,
+.email-icon {
+    color: #e09429;
+   font-size: 20px;
+   
 }

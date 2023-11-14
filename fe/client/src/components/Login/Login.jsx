@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.css'; 
+
 
 
 import styles from './Login.module.css';
@@ -32,7 +34,7 @@ export const Login = () => {
                 <label htmlFor="username" className={styles['login-form-label']}>Username</label>
 
                 <div className={styles['input-container']}>
-                <FontAwesomeIcon icon={['fas', 'user']} style={{ color: '#f29718' }} />                
+                <FontAwesomeIcon icon={faUser} className={styles['user-icon']} />
                 </div>
 
                 <input
@@ -50,7 +52,7 @@ export const Login = () => {
                 <label htmlFor="password" className={styles['login-form-label']}>Password</label>
 
                 <div className={styles['input-container']}>
-                    <FontAwesomeIcon icon={faUnlockAlt} className={styles['icon-password']} />
+                <FontAwesomeIcon icon={faLock} className={styles['password-icon']} />
                 </div>
 
                 <input
