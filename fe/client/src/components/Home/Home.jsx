@@ -24,7 +24,7 @@ export const Home = () => {
                         Recipe
                     </Link>
                 </div>
-                <img className={styles['about-recipe-img']} src="/public/image/cooking.png" alt="" />
+                <img className={styles['about-recipe-img']} src="/image/cooking.png" alt="" />
             </section>
 
             <section className={styles['container-about']}>
