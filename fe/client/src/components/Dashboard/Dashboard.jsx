@@ -15,7 +15,7 @@ export const Dashboard = () => {
     <div className={styles["container-dashboard"]}>
       <div className={styles["container-dashboard-list"]}>
       {recipes.map(recipe => (
-          <DashboardItem key={recipe._id} {...recipe} />
+          <DashboardItem key={recipe.id} {...recipe} />
         ))}
       </div>
     </div>
