@@ -1,17 +1,26 @@
 {
-  "3564027f-adcd-4425-b2c0-1253d2386c0c": {
+  "e08b700d-e9a3-4429-b69b-61537d70af77": {
       "title": "Chia pudding",
-      
-      
+      "ingredients": {
+          "chia_seeds": "1/4 cup",
+          "yogurt": "1 cup",
+          "milk": "1 cup",
+          "sweetener": "1-2 tablespoons honey or maple syrup",
+          "vanilla_extract": "1/2 teaspoon"
+      },
+      "toppings": [
+          "fresh fruits",
+          "nuts",
+          "granola"
+      ],
       "image": "/image/maryam-sicard-ie1q-Eq0_LY-unsplash.jpg",
       "description": [
-        "In a bowl, combine the chia seeds, yogurt, milk, honey or maple syrup, and vanilla extract. Mix well to ensure that the chia seeds are evenly distributed.",
-        "Cover the bowl and refrigerate the mixture for at least 4 hours or overnight. This allows the chia seeds to absorb the liquid and create a pudding-like consistency.",
-        "After the chia pudding has set, give it a good stir to break up any clumps. If the pudding is too thick, you can add a bit more milk to reach your desired consistency.",
-        "Taste the pudding and adjust the sweetness if needed by adding more honey or maple syrup.",
-        "Serve the chia pudding in individual bowls or jars. Top with your favorite fresh fruits, nuts, or granola for added texture and flavor."
+          "In a bowl, combine the chia seeds, yogurt, milk, honey or maple syrup, and vanilla extract. Mix well to ensure that the chia seeds are evenly distributed.",
+          "Cover the bowl and refrigerate the mixture for at least 4 hours or overnight. This allows the chia seeds to absorb the liquid and create a pudding-like consistency.",
+          "After the chia pudding has set, give it a good stir to break up any clumps. If the pudding is too thick, you can add a bit more milk to reach your desired consistency.",
+          "Taste the pudding and adjust the sweetness if needed by adding more honey or maple syrup.",
+          "Serve the chia pudding in individual bowls or jars. Top with your favorite fresh fruits, nuts, or granola for added texture and flavor."
       ],
-
       "id": "3564027f-adcd-4425-b2c0-1253d2386c0c"
   }
 }
