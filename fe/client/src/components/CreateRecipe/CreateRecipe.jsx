@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+
+import * as recipeService from '../../services/recipeService';
 
 import styles from "./CreateRecipe.module.css";
 export const CreateRecipe = () => {
-  const [recipes, setRecipes] = useState({
-    image: '',
-    title: '',
-    description: '',
-  });
+  const navigate = useNavigate();
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setRecipes((recipes) => ({
-       ...recipes, 
-       [name]: value 
-      }));
+  const createRecipeSubmitHandler = async(e) =>{
+    e.preventDefault();
+
+    const recipeData = Object.fromEntries(new FormData(e.currentTarget));
+    try{
+      await recipeService. create(recipeData); 
+
+      navigate('/recipes');
+    }catch(error){
+      // Error notification
+      console.log(error);
+    }
+
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    // Тук може да добавите логика за обработка на формата
-    console.log(recipes);
-  }; 
   return (
     <div className={styles["container-create-recipe"]}>
-      <form onSubmit={onSubmitHandler}  className={styles["create-recipe-form"]} method="post" action="">
+      <form onSubmit={createRecipeSubmitHandler}  className={styles["create-recipe-form"]} method="post" action="">
         <div>
           <label htmlFor="image" className={styles["create-recipe-label"]}>
             Image
@@ -33,8 +33,7 @@ export const CreateRecipe = () => {
             accept="image/*"
             className={styles["create-recipe-input"]}
             name = "image"
-            value={recipes.image}
-            onChange={onChangeHandler}
+            
           />
         </div>
         <div>
@@ -44,8 +43,7 @@ export const CreateRecipe = () => {
           <input
             type="text"
             name="title"
-            value={recipes.title}
-            onChange={onChangeHandler}
+            
             className={styles["create-recipe-input"]}
 
           />
@@ -60,8 +58,7 @@ export const CreateRecipe = () => {
           </label>
           <textarea
             name="description"
-            value={recipes.description}
-            onChange={onChangeHandler}
+            
             rows="4"
             cols="50"
             className={styles["create-recipe-textarea"]}
