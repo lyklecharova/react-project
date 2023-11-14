@@ -30,6 +30,13 @@ export const Header = () => {
                     <li className={styles['element']}>
                     <NavLink className={styles['element']} style={({ isActive }) => ({
                         color: isActive ? "#FF8C00" : "#F5DEB3",
+                    })} to="/recipes/create">
+                        Create
+                    </NavLink>
+                    </li>
+                    <li className={styles['element']}>
+                    <NavLink className={styles['element']} style={({ isActive }) => ({
+                        color: isActive ? "#FF8C00" : "#F5DEB3",
                     })} to="/profile">
                         Profile
                     </NavLink>
