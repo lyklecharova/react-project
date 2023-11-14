@@ -1,0 +1,66 @@
+
+/* DetailsRecipes.module.css */
+
+.container-recipe-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+  }
+  
+  .content-recipe-details {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    margin-top: 20px; /* добавете останалите стилове по ваш избор */
+    
+   
+  }
+  
+  .recipe-details-information {
+    margin-bottom: 20px;
+  }
+  
+  .recipe-details-info {
+    margin-bottom: 10px;
+  }
+  
+  /* .recipe-details-label {
+    font-weight: bold;
+  } */
+  
+  .recipe-details-value {
+    margin: 0;
+    color: #333;
+  }
+
+ /* Добавете следните стилове към вашия DetailsRecipes.module.css */
+
+.raw {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 20px; /* Добавете това, за да управлявате отстоянието между блока и линковете */
+}
+
+.link-style {
+  padding: 10px 20px;
+  background-color: orange;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.link-style:hover {
+  background-color: #0056b3;
+}
+
+  
+ 

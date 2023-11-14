@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.508);
+    z-index: 1;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin: 7px 0px 7px 0px;
+}
+
+.element>a,
+.nav>a {
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}

@@ -1,0 +1,90 @@
+.container-user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container-user-details:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background-image: url("/public/image/kawin-harasai-4PZN7fIqX3w-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}
+.content-user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height:600px;
+    margin: 0 auto;
+    background: #ffffff3a;
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.user-details-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    background: #ffffff7c;
+    border-radius: 5px;
+    backdrop-filter: blur(100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.user-details-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.user-details-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 25px;
+    color: orange;
+    text-shadow: 0px 0px 1px brown;
+    
+}
+.user-details-value {
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.user-details-button {
+    background-color: orange;
+    color: #fff;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 500px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+
+    
+}
+.user-details-button:hover {
+    background-color: #0056b3;
+  }
