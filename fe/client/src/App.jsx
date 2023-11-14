@@ -23,6 +23,7 @@ function App() {
           <Route path="/profile" element={<ProfileDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Home />} />
 
         </Routes>
       </main>
