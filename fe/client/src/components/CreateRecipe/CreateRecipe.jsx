@@ -13,7 +13,7 @@ export const CreateRecipe = () => {
     try{
       await recipeService.create(recipeData); 
 
-      navigate('/recipes');
+      navigate('/dashboard');
     }catch(error){
       // Error notification
       console.log(error);
