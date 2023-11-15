@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from "../Dashboard.module.css";
 export const DashboardItem = ({
-    id,
+    _id,
     image,
     title,
     description
@@ -23,7 +23,7 @@ export const DashboardItem = ({
         </p>
       </div>
 
-      <Link to={`/recipes/${id}`}>
+      <Link to={`/recipes/${_id}`}>
         <button className={styles["dashboard-button"]}>Whole Recipe</button>
       </Link>
     </div>
