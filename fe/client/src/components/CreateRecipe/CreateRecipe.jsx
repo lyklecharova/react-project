@@ -29,8 +29,7 @@ export const CreateRecipe = () => {
             Image
           </label>
           <input
-            type="file"
-            accept="image/*"
+            type="text"
             className={styles["create-recipe-input"]}
             name = "image"
             
