@@ -1,9 +1,5 @@
-import { Dashboard } from '../Dashboard/Dashboard';
-import { Login } from '../Login/Login';
-import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
-import { Register } from '../Register/Register';
 import styles from './Header.module.css'
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 
 export const Header = () => {
@@ -68,12 +64,7 @@ export const Header = () => {
                 </ul>
             </nav>
 
-            {/* <Routes>
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/profile' element={<ProfileDetails />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-            </Routes> */}
+            
 
         </header>
     );
