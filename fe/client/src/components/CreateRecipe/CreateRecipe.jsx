@@ -11,7 +11,7 @@ export const CreateRecipe = () => {
 
     const recipeData = Object.fromEntries(new FormData(e.currentTarget));
     try{
-      await recipeService. create(recipeData); 
+      await recipeService.create(recipeData); 
 
       navigate('/recipes');
     }catch(error){
