@@ -15,7 +15,7 @@ export const DashboardItem = ({
 
   return (
     <div className={styles["dashboard-content"]}>
-      <img className={styles["dashboard-img"]} src={image}  />
+      <img className={styles["dashboard-img"]} src={image} alt={truncatedTitle}/>
       <div className={styles["dashboard-information"]}>
         <h3 className={styles["dashboard-information-title"]}>{truncatedTitle}</h3>
         <p className={styles["dashboard-information-description"]}>
