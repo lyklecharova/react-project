@@ -1,43 +1,39 @@
-
 /* DetailsRecipes.module.css */
 
 .container-recipe-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-   
-  }
-  
-  .content-recipe-details {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 400px;
-    margin-top: 20px; /* добавете останалите стилове по ваш избор */
-    
-   
-  }
-  
-  .recipe-details-information {
-    margin-bottom: 20px;
-  }
-  
-  .recipe-details-info {
-    margin-bottom: 10px;
-  }
-  
-  /* .recipe-details-label {
-    font-weight: bold;
-  } */
-  
-  .recipe-details-value {
-    margin: 0;
-    color: #333;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
- /* Добавете следните стилове към вашия DetailsRecipes.module.css */
+.content-recipe-details {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.recipe-details-information {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.recipe-details-info {
+  margin-bottom: 10px;
+}
+
+.recipe-details-value {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
 
 .raw {
   display: flex;
@@ -45,7 +41,7 @@
   gap: 30px;
   flex-wrap: nowrap;
   width: 100%;
-  margin-top: 20px; /* Добавете това, за да управлявате отстоянието между блока и линковете */
+  margin-top: 20px;
 }
 
 .link-style {
@@ -54,13 +50,9 @@
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  text-align: center;
   font-size: 16px;
 }
 
 .link-style:hover {
   background-color: #0056b3;
 }
-
-  
- 
