@@ -71,5 +71,26 @@
       "Pour the oatmeal into a bowl and add your favorite toppings, such as nuts, berries, or sliced fruit."
     ],
     "_id": "755b7c71-d1a5-4d55-9303-bd05904a406a"
+  },
+
+  "f8825283-fd24-46b2-aafc-8c12879996ca": {
+    "title": "Lorindi's shusi",
+
+    "image": "/image/396273459_358428579958334_4949545026017984936_n.jpg",
+    "description": [
+      "300 grams rice",
+      "1 carrot",
+      "1 avocado",
+      "1  pack of shrimp",
+      "Nori sheets",
+
+
+      "Rinse the rice and cook it in a pressure cooker according to the package instructions.Once the rice is cooked, fluff it and let it cool.",
+      "Slice the carrot and avocado into thin, long strips.If the shrimp are raw, clean and prepare them according to your preferences - you can season and lightly sauté them.",
+      "Unfold the nori sheets on a working surface.",
+      "Spread a small portion of rice onto one of the nori sheets.Place some of the sliced vegetables and shrimp in the middle of the rice.Roll the nori sheet around the ingredients, forming a roll. You can use a sushi mat or simply your hands.",
+      "After rolling, cut it into smaller pieces with a sharp knife.Serve the sushi with soy sauce, wasabi, and pickled ginger."
+    ],
+    "_id": "f8825283-fd24-46b2-aafc-8c12879996ca"
   }
 }
