@@ -1,22 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './DetailsRecipes.module.css';
+import { useEffect, useState } from 'react';
 
-export const DetailsRecipes = ({ 
-    title, 
-    description 
-}) => {
-    
+import * as recipeService from '../../services/recipeService'
+export const DetailsRecipes = () => {
+  const [recipe, setRecipe] = useState([]);
+  const {recipeId} = useParams();
+  useEffect(() => {
+    recipeService.getOne(recipeId)
+      .then(recipe => setRecipe(recipe));
+  }, [recipeId]);
+
   return (
     <div className={styles['container-recipe-details']}>
       <div className={styles['content-recipe-details']}>
         <div className={styles['recipe-details-information']}>
           <div className={styles['recipe-details-info']}>
-           
-            <h2 className={styles['recipe-details-value']}>{title}</h2>
+
+            <h2 className={styles['recipe-details-value']}>{recipe.title}</h2>
           </div>
           <div className={styles['recipe-details-info']}>
-           
-            <h2 className={styles['recipe-details-value']}>{description}</h2>
+
+            <h2 className={styles['recipe-details-value']}>{recipe.description}</h2>
           </div>
         </div>
         <div className={styles['raw']}>
