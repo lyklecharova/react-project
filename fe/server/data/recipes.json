@@ -21,5 +21,36 @@
           "Serve the chia pudding in individual bowls or jars. Top with your favorite fresh fruits, nuts, or granola for added texture and flavor."
       ],
       "_id": "1e0b1f0b-d3d1-4fb4-b5b1-ade8f6f610dd"
-  }
+  },
+
+  "57b1b294-658e-4b11-97a2-e4175f129623": {
+    "title": "Oatmeal pancakes",
+   
+    "image": "/image/calum-lewis-8Nc_oQsc2qQ-unsplash.jpg",
+    "description": [
+      "1 cup rolled oats",
+        "1 cup buttermilk (or a mixture of yogurt and milk)",
+        "1 cup all-purpose flour",
+        "2 tablespoons sugar",
+        "1 teaspoon baking powder",
+        "1/2 teaspoon baking soda",
+        "1/4 teaspoon salt",
+        "1 large egg",
+        "2 tablespoons unsalted butter, melted",
+        "Cooking spray or additional butter for the pan",
+
+        "Blueberries",
+        "sliced bananas",
+        "nuts for added flavor",
+
+        "In a bowl, combine the rolled oats and buttermilk. Let them soak for about 15-20 minutes. This helps soften the oats.",
+        "In a large mixing bowl, whisk together the flour, sugar, baking powder, baking soda, and salt.",
+        "Add the soaked oats, egg, and melted butter to the dry ingredients. Stir until just combined. If the batter is too thick, you can add a little more buttermilk.",
+        "Heat a griddle or non-stick skillet over medium-high heat. Lightly grease with cooking spray or butter.",
+        "Pour 1/4 cup portions of batter onto the hot griddle for each pancake. If desired, add blueberries, sliced bananas, or nuts on top.",
+        "Cook until bubbles form on the surface of the pancakes and the edges look set. Flip and cook the other side until golden brown."
+
+    ],
+    "_id": "57b1b294-658e-4b11-97a2-e4175f129623"
+}
 }
