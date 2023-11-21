@@ -7,7 +7,10 @@ Single Page Application (SPA) created for recipes using React for the Frontend (
 # General Requirements:
 
     * The main part includes a dashboard for creating recipes.
-    * A guest should have access to the Home, Dashboard (with no access to Edit and Delete buttons, only able to read content), Login, and Register pages.
+    * A guest should have access:
+     Home page,
+     Dashboard page (with no access to Edit and Delete buttons, only able to read content),
+     Login and Register pages.
     * A logged-in user (author) should have access to the Create Recipes, Profile, and Logout pages.
             * A logged-in user (author) has access to Edit and Delete buttons.
 
