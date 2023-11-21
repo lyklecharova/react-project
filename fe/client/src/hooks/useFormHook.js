@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function useFormHooks(submitHandler, initialValues) {
-    const [values, setValues] = useState({ initialValues }); // values държи стейта, setValues - променя този стейт
+    const [values, setValues] = useState(initialValues); // values държи стейта, setValues - променя този стейт
 
     const onChange = (e) => {
         setValues(state => ({
