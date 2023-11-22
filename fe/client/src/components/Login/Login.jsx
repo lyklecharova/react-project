@@ -1,66 +1,70 @@
-import React, { useState } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
-import '@fortawesome/fontawesome-free/css/all.css'; 
 
-
-
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/authContext';
+import { useFormHooks } from '../../hooks/useFormHook';
 import styles from './Login.module.css';
+
+
+const LoginFormKeys = {
+    Email: 'email',
+    Password: 'password'
+};
+
 export const Login = () => {
-    const [login, setLogin] = useState({
-        username: '',
-        password: '',
+
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useFormHooks(loginSubmitHandler, {
+        // values -> стойностите на формата
+        // onChange, onSubmit -> идват от useFormHooks
+
+        // email: '',
+        // password: '',
+
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: ''
     });
 
-    const onChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setLogin((login) => ({
-            ...login,
-            [name]: value,
-        }));
-    };
-
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        // Тук може да добавите логика за обработка на формата
-        console.log(login)
-    }
 
     return (
         <section className={styles['login-register-section']}>
-            <form onSubmit={onSubmitHandler} action="submit.php" method="post" className={styles['login-register-form']} >
-                <label htmlFor="username" className={styles['login-form-label']}>Username</label>
+            <form onSubmit={onSubmit} action="submit.php" method="post" className={styles['login-register-form']} >
+                <label htmlFor="email" className={styles['login-form-label']}>Email</label>
 
                 <div className={styles['input-container']}>
-                <FontAwesomeIcon icon={faUser} className={styles['user-icon']} />
+                    <FontAwesomeIcon icon={faUser} className={styles['user-icon']} />
                 </div>
 
                 <input
                     type="text"
-                    id="username"
-                    name="username"
-                    value={login.username}
-                    onChange={onChangeHandler}
+                    id="email"
+                    // name="email"
+                    name={LoginFormKeys.Email}
+                    onChange={onChange}
+                    // value={values.email}
+                    value={values[LoginFormKeys.Email]}
                     className={styles['login-form-input']}
-                    placeholder="Username..."
-                    required autoComplete="username"
+                    placeholder="Email..."
+                    required autoComplete="email"
                 />
                 <br />
 
                 <label htmlFor="password" className={styles['login-form-label']}>Password</label>
 
                 <div className={styles['input-container']}>
-                <FontAwesomeIcon icon={faLock} className={styles['password-icon']} />
+                    <FontAwesomeIcon icon={faLock} className={styles['password-icon']} />
                 </div>
 
                 <input
                     type="password"
                     id="password"
-                    name="password"
-                    value={login.password}
-                    onChange={onChangeHandler}
+                    // name="password"
+                    name={LoginFormKeys.Password}
+                    onChange={onChange}
+                    // value={values.password}
+                    value={values[LoginFormKeys.Password]}
                     className={styles['login-form-input']}
                     placeholder="Password..."
                     required autoComplete="password"

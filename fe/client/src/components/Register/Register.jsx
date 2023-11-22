@@ -1,56 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext} from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css'; 
 
-import styles from './Register.module.css'
+
+import { AuthContext } from '../../contexts/authContext';
+import { useFormHooks } from '../../hooks/useFormHook';
+import styles from './Register.module.css';
+
+
+const RegisterFormKeys = {
+    Email: 'email',
+    Password: 'password',
+    ConfirmPassword: 'confirmPassword'
+};
+
 export const Register = () => {
-    const [register, setRegister] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+    const {registerSubmitHandler} = useContext(AuthContext);
+    const {values, onChange, onSubmit} = useFormHooks(registerSubmitHandler,{
+        [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.Password] : '',
+        [RegisterFormKeys.ConfirmPassword]: '',
     });
 
-    const onChangeHandler = (e) => {
-        const { name, value } = e.target;
-        setRegister((register) => ({
-            ...register,
-            [name]: value,
-        }));
-    };
-
-
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        // Тук може да добавите логика за обработка на формата
-        console.log(register)
-    };
     return (
         <section className={styles['login-register-section']}>
-            <form onSubmit={onSubmitHandler} action="submit.php" method="post" className={styles['login-register-form']}>
-                <label htmlFor="username" className={styles['login-form-label']}>Username</label>
-
-                <div className={styles['input-container']}>
-                <FontAwesomeIcon icon={faUser} className={styles['user-icon']} />
-                </div>
-
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={register.username}
-                    onChange={onChangeHandler}
-                    className={styles['login-form-input']}
-                    placeholder="Username"
-                    required= {true}
-                    autoComplete="username"
-                />
-                <br />
+            <form onSubmit={onSubmit} action="submit.php" method="post" className={styles['login-register-form']}>
 
                 <label htmlFor="email" className={styles['login-form-label']}>Email</label>
 
@@ -62,8 +40,8 @@ export const Register = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={register.email}
-                    onChange={onChangeHandler}
+                    value={values[RegisterFormKeys.Email]}
+                    onChange={onChange}
                     className={styles['login-form-input']}
                     placeholder="Email"
                     required= {true} 
@@ -80,8 +58,8 @@ export const Register = () => {
                 <input type="password"
                     id="password"
                     name="password"
-                    value={register.password}
-                    onChange={onChangeHandler}
+                    value={values[RegisterFormKeys.Password]}
+                    onChange={onChange}
                     className={styles['login-form-input']}
                     placeholder="Password"
                     required= {true} 
@@ -99,8 +77,8 @@ export const Register = () => {
                     type="password"
                     id="confirmPassword"
                     name="confirmPassword"
-                    value={register.confirmPassword}
-                    onChange={onChangeHandler}
+                    value={values[RegisterFormKeys.ConfirmPassword]}
+                    onChange={onChange}
                     className={styles['login-form-input']}
                     placeholder="Confirm Password"
                     required= {true}

@@ -78,13 +78,10 @@
     position: relative;
 }
 
-
-.user-icon,
 .unlock-password,
 .lock-password-icon,
 .password-icon,
 .email-icon {
     color: #e09429;
    font-size: 20px;
-   
 }
