@@ -1,4 +1,5 @@
 .container-dashboard {
+    background-color: rgba(0, 0, 0, 0.591);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,9 +19,7 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-    opacity: 0.5;
-
-
+    
 }
 
 .container-dashboard-list {
@@ -29,6 +28,7 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
+    
 }
 
 .dashboard-content {
@@ -50,6 +50,7 @@
     background-position: center;
     object-fit: cover;
     background-size: contain;
+   
 }
 
 .dashboard-information {
@@ -87,4 +88,13 @@
 
 .dashboard-button:hover {
     background-color: #0056b3;
+}
+.recipe-error{
+    font-size: 5rem;
+    color:wheat;
+}
+.error a{
+    font-size: 2em;
+    text-align: center;
+    color: orange
 }

@@ -4,7 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 150vh;
+
 }
 
 .content-recipe-details {
@@ -35,6 +36,10 @@
   font-size: 14px;
 }
 
+ul>.recipe-details-list {
+  list-style-type: circle;
+}
+
 .raw {
   display: flex;
   justify-content: center;
@@ -55,4 +60,20 @@
 
 .link-style:hover {
   background-color: #0056b3;
+}
+
+
+.container-dashboard:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 50%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.5;
+
 }
