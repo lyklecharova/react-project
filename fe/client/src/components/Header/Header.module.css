@@ -24,7 +24,8 @@
 }
 
 .element>a,
-.nav>a {
+.nav>a,
+.user {
     color: white;
     text-transform: uppercase;
     font-size: 20px;
