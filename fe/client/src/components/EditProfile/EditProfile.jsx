@@ -1,45 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+import { AuthContext } from '../../contexts/authContext';
+import { useFormHooks } from '../../hooks/useFormHook';
 
 import styles from "./EditProfile.module.css";
 
+const EditFormKeys = {
+  Email: 'email',
+  Password: 'password',
+  ConfirmPassword: 'confirmPassword'
+};
+
 export const EditProfile = () => {
-  const [profile, setProfile] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confrimPassword: '',
+  const { editSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useFormHooks(editSubmitHandler, {
+    [EditFormKeys.Email]: '',
+    [EditFormKeys.Password]: '',
+    [EditFormKeys.ConfirmPassword]: '',
   });
-
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setProfile((profile) => ({
-       ...profile, 
-       [name]: value 
-      }));
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    // Тук може да добавите логика за обработка на формата
-    console.log(profile);
-  };
   return (
     <section className={styles["edit-section"]}>
-      <form  onSubmit={onSubmitHandler} method="post" className={styles["edit-form"]}>
-        <div>
-          <label htmlFor="username" className={styles["edit-form-label"]}>
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={profile.username}
-            onChange={onChangeHandler}
-            className={styles["edit-form-input"]}
-            required = {true}
-          />
-        </div>
+      <form onSubmit={onSubmit} method="post" className={styles["edit-form"]}>
+
 
         <div>
           <label htmlFor="email" className={styles["edit-form-label"]}>
@@ -49,8 +31,8 @@ export const EditProfile = () => {
             type="email"
             id="email"
             name="email"
-            value={profile.email}
-            onChange={onChangeHandler}
+            value={values[EditFormKeys.Email]}
+            onChange={onChange}
             className={styles["edit-form-input"]}
             required={true}
           />
@@ -64,8 +46,8 @@ export const EditProfile = () => {
             type="password"
             id="password"
             name="password"
-            value={profile.password}
-            onChange={onChangeHandler}
+            value={values[EditFormKeys.Password]}
+            onChange={onChange}
             className={styles["edit-form-input"]}
             required={true}
           />
@@ -82,8 +64,8 @@ export const EditProfile = () => {
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            value={profile.confrimPassword}
-            onChange={onChangeHandler}
+            value={values[EditFormKeys.ConfirmPassword]}
+            onChange={onChange}
             className={styles["edit-form-input"]}
             required={true}
           />
