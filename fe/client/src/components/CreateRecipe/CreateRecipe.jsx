@@ -1,4 +1,4 @@
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 
@@ -32,6 +32,7 @@ export const CreateRecipe = () => {
             type="text"
             className={styles["create-recipe-input"]}
             name = "image"
+            placeholder="Upload image"
             
           />
         </div>
@@ -42,9 +43,8 @@ export const CreateRecipe = () => {
           <input
             type="text"
             name="title"
-            
+            placeholder="Enter recipe title"
             className={styles["create-recipe-input"]}
-
           />
         </div>
 
@@ -57,9 +57,9 @@ export const CreateRecipe = () => {
           </label>
           <textarea
             name="description"
-            
             rows="4"
             cols="50"
+            placeholder="Enter recipe description"
             className={styles["create-recipe-textarea"]}
           />
         </div>

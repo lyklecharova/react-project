@@ -29,8 +29,7 @@ export const EditRecipe = () => {
             Image
           </label>
           <input
-            type="file"
-            accept="image/*"
+            type="text"
             className={styles["edit-recipe-input"]}
             name="image"
             value={recipes.image}
