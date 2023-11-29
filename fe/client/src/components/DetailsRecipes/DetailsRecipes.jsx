@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect, useReducer, useState, useMemo } from 'react';
 
 import styles from './DetailsRecipes.module.css';
@@ -11,6 +11,7 @@ import { AuthContext } from '../../contexts/authContext'
 import { useFormHooks } from '../../hooks/useFormHook';
 
 export const DetailsRecipes = () => {
+  const navigate = useNavigate();
   const { email, userId } = useContext(AuthContext);
   const [recipe, setRecipe] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
@@ -43,11 +44,27 @@ export const DetailsRecipes = () => {
     })
   };
 
+  const deleteButtonClickHandler= async () =>{
+    const hasConfirmed = confirm(`Are you sure you want to delete ${recipe.title}?`);
+
+    if(hasConfirmed){
+      await recipeService.del(recipeId);
+
+      navigate('/dashboard')
+    }
+  };
+
   // TODO: temp solution for form reinitialization
   const initialValues = useMemo(() => ({
+    // useMemo -> Позволява да изпълни функция, чийто отговор ще бъде запазен като референция
     comment: '',
-  }), [])
+  }), []) // [] -> dependency array
+  
   const { values, onChange, onSubmit } = useFormHooks(addCommentHandler, initialValues);
+
+  // if(Math.random() < 0.5){
+  //   throw new Error('Recipe details error!')
+  // }
 
   return (
     <div className={styles['container-recipe-details']}>
@@ -71,9 +88,10 @@ export const DetailsRecipes = () => {
               <Link to={pathToUrl(Path.RecipeEdit, { recipeId })} className={styles['link-style']}>
                 Edit Recipe
               </Link>
-              <Link to={`/recipes/details`} className={styles['link-style']}>
+              {/* <Link to={pathToUrl(Path.RecipeDelete, { recipeId })} className={styles['link-style']}>
                 Delete Recipe
-              </Link>
+              </Link> */}
+              <button className={styles['link-style']} onClick={deleteButtonClickHandler}>Delete Recipe</button>
             </div>
 
           )}
