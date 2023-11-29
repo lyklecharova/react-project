@@ -1,5 +1,7 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import styles from './Home.module.css'
+import { LatestRecipe } from './LatestRecipe';
 export const Home = () => {
     return (
         <>
@@ -13,6 +15,7 @@ export const Home = () => {
                 </div>
             </div>
 
+            <LatestRecipe />
             <section className={styles['container-about-recipe']}>
                 <div className={styles['content-about-recipe']}>
                     <h2 className={styles['about-recipe-title']}>Explore Our Recipe Dashboard</h2>
@@ -23,11 +26,13 @@ export const Home = () => {
                     <Link className={styles['about-recipe-link']} to="/dashboard">
                         Recipe
                     </Link>
+
                 </div>
                 <img className={styles['about-recipe-img']} src="/image/cooking.png" alt="" />
             </section>
 
             <section className={styles['container-about']}>
+
 
                 <div className={styles['content-about']}>
                     <h2 className={styles['about-title']}>The Website's Goal</h2>
