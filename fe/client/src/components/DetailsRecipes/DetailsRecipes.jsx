@@ -54,13 +54,15 @@ export const DetailsRecipes = () => {
     }
   };
 
-  // TODO: temp solution for form reinitialization
-  const initialValues = useMemo(() => ({
-    // useMemo -> Позволява да изпълни функция, чийто отговор ще бъде запазен като референция
-    comment: '',
-  }), []) // [] -> dependency array
+  // // TODO: temp solution for form reinitialization
+  // const initialValues = useMemo(() => ({
+  //   // useMemo -> Позволява да изпълни функция, чийто отговор ще бъде запазен като референция
+  //   comment: '',
+  // }), []) // [] -> dependency array
   
-  const { values, onChange, onSubmit } = useFormHooks(addCommentHandler, initialValues);
+  const { values, onChange, onSubmit } = useFormHooks(addCommentHandler,{
+    comment: '',
+  });
 
   // if(Math.random() < 0.5){
   //   throw new Error('Recipe details error!')
@@ -79,6 +81,7 @@ export const DetailsRecipes = () => {
 
             <ul className={styles['recipe-details-list']} role='list'>
               <li>{recipe.ingredients}</li>
+              
             </ul>
 
             <p className={styles['recipe-details-value']}>{recipe.description}</p>
