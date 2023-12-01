@@ -7,5 +7,9 @@ export const Path = {
     Login: '/login',
     Register: '/register',
     Logout: '/logout',
-    PageNotFound: '/*'
+    PageNotFound: '/*',
+
+    ProfileEdit: '/profile/:userId/edit',
+    RecipeEdit: '/recipes/:recipeId/edit',
+    RecipeDelete: '/recipes/:recipeId/delete'
 }
