@@ -5,7 +5,9 @@ import * as recipeService from '../../services/recipeService';
 
 import styles from './LatestRecipe.module.css';
 
-export const LatestRecipe = () => {
+export const LatestRecipe = ({
+  _id
+}) => {
   const [latestRecipes, setLatestRecipes] = useState([]);
 
   useEffect(() => {
@@ -21,11 +23,16 @@ export const LatestRecipe = () => {
   return (
     <div className={styles['content-about']}>
       <h2 className={styles['about-title']}>Latest Recipe</h2>
-
       <ul className={styles['about-description']} role='list'>
+
         {latestRecipes.map(recipe => (
           <li key={recipe._id}>
-            <Link className={styles['recipe-latest-link']} to={'/dashboard'}>
+            
+            {/* <Link className={styles['recipe-latest-link']} to={`/recipes/${recipe._id}`}>
+              <button className={styles['more-information']}>See more</button>
+            </Link> */}
+
+            <Link to={`/recipes/${recipe._id}`} className={styles['recipe-latest-link']}>
               <img className={styles['latest-recipe-img']} src={recipe.image} alt={recipe.title} />
               <h3 className={styles['recipe-latest-title']}>{recipe.title}</h3>
             </Link>
