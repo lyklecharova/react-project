@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link,NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.css'
 import { AuthContext } from '../../contexts/authContext';
@@ -32,13 +32,6 @@ export const Header = () => {
                                     color: isActive ? "#FF8C00" : "#F5DEB3"
                                 })} to="/recipes/create">
                                     Create Recipes
-                                </NavLink>
-                            </li>
-                            <li className={styles['element']}>
-                                <NavLink className={styles['element']} style={({ isActive }) => ({
-                                    color: isActive ? "#FF8C00" : "#F5DEB3"
-                                })} to="/profile">
-                                    Profile
                                 </NavLink>
                             </li>
                             <li className={styles['element']}>
