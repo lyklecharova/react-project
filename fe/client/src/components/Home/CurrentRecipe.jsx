@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 
-import styles from './LatestRecipe.module.css';
+import styles from './CurrentRecipe.module.css';
 
-export const LatestRecipe = ({
+export const CurrentRecipe = ({
   _id
 }) => {
-  const [latestRecipes, setLatestRecipes] = useState([]);
+  const [currentRecipes, setCurrentRecipes] = useState([]);
 
   useEffect(() => {
-    recipeService.getLatestRecipes()
+    recipeService.getCurrentRecipes()
       .then(result => {
-        setLatestRecipes(result);
+        setCurrentRecipes(result);
       })
       .catch(error => {
         console.error('Error fetching latest recipes:', error);
@@ -22,10 +22,10 @@ export const LatestRecipe = ({
 
   return (
     <div className={styles['content-about']}>
-      <h2 className={styles['about-title']}>Latest Recipe</h2>
+      <h2 className={styles['about-title']}>Current Recipe</h2>
       <ul className={styles['about-description']} role='list'>
 
-        {latestRecipes.map(recipe => (
+        {currentRecipes.map(recipe => (
           <li key={recipe._id}>
             
             {/* <Link className={styles['recipe-latest-link']} to={`/recipes/${recipe._id}`}>
