@@ -1346,15 +1346,15 @@
                 title: "Chia pudding",
                 image: "/image/maryam-sicard-ie1q-Eq0_LY-unsplash.jpg",
                 ingredients: [
-                    "chia seeds: 1/4 cup",
-                    "yogurt: 1 cup",
-                    "milk :1 cup",
-                    "sweetener: 1-2 tablespoons honey or maple syrup",
-                    "vanilla extract : 1/2 teaspoon",
+                    `chia seeds: 1/4 cup
+                    yogurt: 1 cup
+                    milk :1 cup
+                    sweetener: 1-2 tablespoons honey or maple syrup
+                    vanilla extract : 1/2 teaspoon
 
-                    "fresh fruits",
-                    "nuts",
-                    "granola",
+                    fresh fruits
+                    nuts
+                    granola`
                 ],
                 description: [
                     "In a bowl, combine the chia seeds, yogurt, milk, honey or maple syrup, and vanilla extract. Mix well to ensure that the chia seeds are evenly distributed.",
@@ -1369,22 +1369,22 @@
                 _ownerId: "4f7aba0f-07ca-465b-9543-011cefcc3caa",
                 title: "Oatmeal pancakes",
                 image: "/image/calum-lewis-8Nc_oQsc2qQ-unsplash.jpg",
-                ingredients: [
-                    "1 cup rolled oats",
-                    "1 cup buttermilk (or a mixture of yogurt and milk)",
-                    "1 cup all-purpose flour",
-                    "2 tablespoons sugar",
-                    "1 teaspoon baking powder",
-                    "1/2 teaspoon baking soda",
-                    "1/4 teaspoon salt",
-                    "1 large egg",
-                    "2 tablespoons unsalted butter, melted",
+                ingredients:
+                    `1 cup rolled oats 1 cup buttermilk (or a mixture of yogurt and milk)
+                    1 cup all-purpose flour
+                    2 tablespoons sugar
+                    1 teaspoon baking powder
+                    1/2 teaspoon baking soda
+                    1/4 teaspoon salt
+                    1 large egg
+                    2 tablespoons unsalted butter, melted
 
-                    "Cooking spray or additional butter for the pan",
-                    "Blueberries",
-                    "sliced bananas",
-                    "nuts for added flavor",
-                ],
+                    Cooking spray or additional butter for the pan
+                    Blueberries
+                    sliced bananas
+                    nuts for added flavor`
+
+                ,
                 description: [
                     "In a bowl, combine the rolled oats and buttermilk. Let them soak for about 15-20 minutes. This helps soften the oats.",
                     "In a large mixing bowl, whisk together the flour, sugar, baking powder, baking soda, and salt.",
@@ -1400,12 +1400,12 @@
                 title: "Oatmeal porridge",
                 image: "/image/ana-azevedo-xzqQRayYdVI-unsplash.jpg",
                 ingredients: [
-                    "1/2 cup rolled oats",
-                    "1 cup milk (or water for a lighter version)",
+                    `1/2 cup rolled oats
+                    1 cup milk (or water for a lighter version)
 
-                    "honey",
-                    "nuts",
-                    "berries",
+                    honey
+                    nuts
+                    berries`
                 ],
                 description: [
 
@@ -1421,11 +1421,11 @@
                 title: "Lorindi's shusi",
                 image: "/image/396273459_358428579958334_4949545026017984936_n.jpg",
                 ingredients: [
-                    "300 grams rice",
-                    "1 carrot",
-                    "1 avocado",
-                    "1  pack of shrimp",
-                    "Nori sheets",
+                    `300 grams rice
+                    1 carrot
+                    1 avocado
+                    1  pack of shrimp
+                    Nori sheets`
                 ],
                 description: [
                     "Rinse the rice and cook it in a pressure cooker according to the package instructions.Once the rice is cooked, fluff it and let it cool.",

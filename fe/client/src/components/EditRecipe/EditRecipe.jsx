@@ -1,29 +1,50 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
+import * as recipeService from '../../services/recipeService';
 import styles from "./EditRecipe.module.css";
-export const EditRecipe = () => {
 
-  const [recipes, setRecipes] = useState({
+export const EditRecipe = () => {
+  const navigate = useNavigate();
+  const { recipeId } = useParams();
+  const [recipe, setRecipe] = useState({
     image: '',
     title: '',
     description: '',
-    
+    ingredients: '',
   });
-  const onChangeHanlder = (e) => {
-    const { name, value } = e.target;
-    setRecipes((recipe) => ({ 
-      ...recipe, 
-      [name]: 
-      value }));
-  }; 
-  const onSubmitHanlder = (e) => {
+
+  // Mount
+  useEffect(() => {
+    recipeService.getOne(recipeId)
+      .then(result => {
+        setRecipe(result);
+      });
+  }, [recipeId])
+
+  const editRecipeSubmitHandler = async (e) => {
     e.preventDefault();
-    // Тук може да добавите логика за обработка на формата
-    console.log(recipes);
+    const values = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      await recipeService.edit(recipeId, values);
+      navigate('/dashboard');
+    } catch (err) {
+      // Error notification
+      console.log(err);
+    }
   };
+
+  const onChange = (e) => {
+    setRecipe(state => ({
+      ...state,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <div className={styles["container-edit-recipe"]}>
-      <form onSubmit={onSubmitHanlder} className={styles["edit-recipe-form"]} method="post" action="">
+      <form onSubmit={editRecipeSubmitHandler} className={styles["edit-recipe-form"]} method="post" action="">
         <div>
           <label htmlFor="image" className={styles["edit-recipe-label"]}>
             Image
@@ -32,8 +53,9 @@ export const EditRecipe = () => {
             type="text"
             className={styles["edit-recipe-input"]}
             name="image"
-            value={recipes.image}
-            onChange={onChangeHanlder}
+            value={recipe.image}
+            onChange={onChange}
+            placeholder='Upload image'
           />
         </div>
         <div>
@@ -43,9 +65,9 @@ export const EditRecipe = () => {
           <input
             type="text"
             name="title"
-            value={recipes.title}
-            onChange={onChangeHanlder}
-
+            value={recipe.title}
+            onChange={onChange}
+            placeholder='Enter recipe title'
             className={styles["edit-recipe-input"]}
           />
         </div>
@@ -62,11 +84,31 @@ export const EditRecipe = () => {
             rows="4"
             cols="50"
             className={styles["edit-recipe-textarea"]}
-            value={recipes.description}
-            onChange={onChangeHanlder}
+            value={recipe.description}
+            onChange={onChange}
+            placeholder='Enter recipe description'
           />
         </div>
 
+        <div>
+          <label
+            htmlFor="ingredients"
+            className={styles["edit-recipe-label"]}
+          >
+            Ingredients
+          </label>
+          <textarea
+            name="ingredients"
+            rows="4"
+            cols="50"
+            className={styles["edit-recipe-textarea"]}
+            value={recipe.ingredients}
+            onChange={onChange}
+            placeholder='Enter recipe ingredients'
+          />
+        </div>
+
+        
         <button className={styles["edit-recipe-button"]}>Edit</button>
       </form>
     </div>
