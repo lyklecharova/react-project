@@ -54,7 +54,6 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding-left: 30px;
-
 }
 
 .login-form-button {
@@ -68,21 +67,22 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 20px;
-
 }
 
 .login-form-button:hover {
     background-color: #0056b3;
 }
 
-
 .input-container {
     position: relative;
 }
-
 
 .user-icon,
 .password-icon {
     color: #e09429;
     font-size: 20px;
+    position: absolute;
+    align-items: center;
+    right: -156px;
+    bottom: -41px
 }

@@ -83,5 +83,9 @@
 .password-icon,
 .email-icon {
     color: #e09429;
-   font-size: 20px;
+    font-size: 20px;
+    position: absolute;
+    align-items: center;
+    right: -156px;
+    bottom: -41px
 }
