@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 
 import * as recipeService from '../../services/recipeService';
 
-import styles from './CurrentRecipe.module.css';
+import styles from './LatestRecipe.module.css';
 
-export const CurrentRecipe = ({
-  _id
-}) => {
-  const [currentRecipes, setCurrentRecipes] = useState([]);
+export const LatestRecipe = () => {
+  const [latestRecipes, setLatestRecipes] = useState([]);
 
   useEffect(() => {
-    recipeService.getCurrentRecipes()
+    recipeService.getLatestRecipes()
       .then(result => {
-        setCurrentRecipes(result);
+        setLatestRecipes(result);
       })
       .catch(error => {
         console.error('Error fetching latest recipes:', error);
@@ -22,12 +20,18 @@ export const CurrentRecipe = ({
 
   return (
     <div className={styles['content-about']}>
-      <h2 className={styles['about-title']}>Current Recipe</h2>
+      <h2 className={styles['about-title']}>Latest Recipe</h2>
       <ul className={styles['about-description']} role='list'>
 
-        {currentRecipes.map(recipe => (
+        {latestRecipes.length === 0 && (
+          <div>
+            <h2 className={styles['recipe-error']}>No recipes available at the moment. Check back later!</h2>
+          </div>
+        )}
+
+        {latestRecipes.map(recipe => (
           <li key={recipe._id}>
-            
+
             {/* <Link className={styles['recipe-latest-link']} to={`/recipes/${recipe._id}`}>
               <button className={styles['more-information']}>See more</button>
             </Link> */}

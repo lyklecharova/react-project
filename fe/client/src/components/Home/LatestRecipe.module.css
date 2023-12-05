@@ -64,7 +64,10 @@
   color: rgb(242, 104, 70);
   height: 100%;
 }
-
+.recipe-error{
+  font-size: 35px;
+  color: rgb(242, 104, 70);
+}
 /* .more-information{
   color: rgb(242, 104, 70);
   margin: 10px;
