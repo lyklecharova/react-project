@@ -10,11 +10,14 @@ export function useFormHooks(submitHandler, initialValues) {
         }));
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-
-        submitHandler(values);
-
+        try {
+            submitHandler(values);
+        } catch (err) {
+            console.log(err);
+            throw Error(err);
+        }
     };
 
     return {

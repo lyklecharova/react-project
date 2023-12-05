@@ -1,4 +1,4 @@
-import { createContext} from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router";
 
 import * as authService from '../services/authService';
@@ -12,22 +12,34 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [auth, setAuth] = usePersistedState('auth', {});
+    // const [auth, setAuth] = useState(()=> {
+    //     // initial function to delete token , return empty object
+    //     localStorage.removeItem("accessToken");
+    //     return {};
+    //   })
 
     const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
+        try {
+            const result = await authService.login(values.email, values.password);
 
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
-        navigate(Path.Home); 
-
+            setAuth(result);
+            localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
+            navigate(Path.Home);
+        } catch (err) {
+            console.error(err)
+        }
     };
 
     const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values.email, values.password);
-
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
-        navigate(Path.Home);
+        try {
+            const result = await authService.register(values.email, values.password);
+            setAuth(result);
+            localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
+            navigate(Path.Home);
+        } catch (err) {
+            console.error(err)
+            // throw err;
+        }
     };
 
     const logoutHandler = () => {
@@ -45,8 +57,8 @@ export const AuthProvider = ({
         logoutHandler,
 
         username: auth.username || auth.email,
-        email: auth.email,
-        userId: auth._id,
+        email: auth?.email || null,
+        userId: auth?._id || null,
         isAuthenticated: !!auth.accessToken,
     };
 

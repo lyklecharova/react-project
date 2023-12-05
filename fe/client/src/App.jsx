@@ -16,11 +16,12 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from "./components/Logout/Logout";
 import AuthGuard from "./components/guards/AuthGuard";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 
 function App() {
   return (
-
+    <ErrorBoundary>
     <AuthProvider>
       <Header />
       <main>
@@ -42,6 +43,7 @@ function App() {
       </main>
       <Footer />
     </AuthProvider>
+    </ErrorBoundary>
 
   )
 }

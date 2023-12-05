@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
 }
 
 .container-create-recipe:before {
@@ -26,6 +26,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 500px;
+    /* Increase the max-width for better responsiveness */
+    margin: 0 auto;
+    background: #ffffff7c;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Use 100% width to make it responsive */
+    height: auto;
+    /* Allow the height to adjust based on content */
+
+    /* Additional styles to handle smaller screens */
+    @media (max-width: 500px) {
+        max-width: 90%;
+        /* Adjust max-width for smaller screens */
+    }
+
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-width: 450px;
     margin: 0 auto;
     background: #ffffff7c;
@@ -34,7 +57,7 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
-    height: 700px;
+    height: 700px; */
 }
 
 .create-recipe-form>div {
@@ -56,9 +79,10 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 20px;
+    margin-bottom: 8px;
 }
 
-.create-recipe-input {
+/* .create-recipe-input {
     font-size: 16px;
     width: 360px;
     padding: 10px;
@@ -73,14 +97,31 @@
     width: 360px;
     font-size: 16px;
     letter-spacing: 1.5px;
+} */
 
-
-
-
+.create-recipe-input,
+.create-recipe-textarea {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    letter-spacing: 1.5px;
 }
 
 .create-recipe-button {
+    width: 100%;
+    padding: 12px;
     background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 20px;
+
+    /* background-color: orange;
     color: #fff;
     padding: 10px 0px;
     border: none;
@@ -90,7 +131,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 20px; */
 }
 
 .create-recipe-button:hover {
