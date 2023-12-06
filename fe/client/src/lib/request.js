@@ -17,23 +17,22 @@ const recipeOptions = (data) => {
     return options;
 };
 const request = async (method, url, data) => {
-    
-        const response = await fetch(url, {
-            ...recipeOptions(data),
-            method,
-        });
+    const response = await fetch(url, {
+        ...recipeOptions(data),
+        method,
+    });
 
-        if (response.status === 204) {
-            // status 204 === NO CONTENT
-            return {};
-        }
+    if (response.status === 204) {
+        // status 204 === NO CONTENT
+        return {};
+    }
 
-        const result = await response.json();
+    const result = await response.json();
 
-        if (!response.ok) {
-            throw result;
-        }
-        return result;
+    if (!response.ok) {
+        throw result;
+    }
+    return result;
 };
 
 export const get = request.bind(null, 'GET');

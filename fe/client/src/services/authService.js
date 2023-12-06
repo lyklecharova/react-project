@@ -12,15 +12,18 @@ export const edit = async (userId, updatedUserData) => {
 
   const result = await request.put(`${baseUrl}/user/${userId}`, updatedUserData);
   return result;
-
 };
 
 export const login = async (email, password) => {
-  const result = await request.post(`${baseUrl}/login`, {
-    email,
-    password,
-  });
-  return result;
+  try {
+    const result = await request.post(`${baseUrl}/login`, {
+      email,
+      password,
+    });
+    return result;
+  } catch (err) {
+    console.log(err)
+  }
 };
 
 export const register = async (email, password) => {
@@ -29,6 +32,7 @@ export const register = async (email, password) => {
     password,
   });
   return result;
+
 }
 
 export const logout = () => request.get(`${baseUrl}/logout`);
