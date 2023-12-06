@@ -1,6 +1,5 @@
 import * as request from '../lib/request';
 
-
 const baseUrl = 'http://localhost:3030/data/recipes';
 
 export const getAll = async () => {
@@ -18,8 +17,9 @@ export const getLatestRecipes = async () => {
         offset: 0,
         pageSize: 3,
     });
-    const result = await request.get(`${baseUrl}?${query}`);
 
+    const result = await request.get(`${baseUrl}?${query}`);
+    return result;
 }
 
 export const create = async (recipeData) => {
