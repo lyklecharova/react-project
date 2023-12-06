@@ -24,7 +24,6 @@ Single Page Application (SPA) created for recipes using React for the Frontend (
 Technologies used in the project:
 *   HTML CSS JavaScript
 *   React
-*   Deploy the application in a cloud  Firebase
 
 # General Requirements:
 
