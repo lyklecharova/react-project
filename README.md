@@ -33,7 +33,7 @@ Technologies used in the project:
      Home page,
      Dashboard page (with no access to Edit and Delete buttons, only able to read content),
      Login and Register pages.
-    * A logged-in user (author) should have access to the Create Recipes, Profile, and Logout pages.
+    * A logged-in user (author) should have access to the Create Recipes and Logout pages.
             * A logged-in user (author) has access to Edit and Delete buttons.
 
 ######################################################################################
