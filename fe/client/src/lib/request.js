@@ -17,7 +17,7 @@ const recipeOptions = (data) => {
     return options;
 };
 const request = async (method, url, data) => {
-    try {
+    
         const response = await fetch(url, {
             ...recipeOptions(data),
             method,
@@ -34,10 +34,6 @@ const request = async (method, url, data) => {
             throw result;
         }
         return result;
-    } catch (err) {
-        console.log(err);
-    }
-
 };
 
 export const get = request.bind(null, 'GET');

@@ -15,7 +15,7 @@ const LoginFormKeys = {
 
 export const Login = () => {
 
-    const { loginSubmitHandler } = useContext(AuthContext);
+    const { loginSubmitHandler, getErrorMsg, clearErrorMsg } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useFormHooks(loginSubmitHandler, {
         // values -> стойностите на формата
         // onChange, onSubmit -> идват от useFormHooks
@@ -27,6 +27,10 @@ export const Login = () => {
         [LoginFormKeys.Password]: ''
     });
 
+    const inputChangeHandler = (e) => {
+        clearErrorMsg();
+        onChange(e);
+    };
 
     return (
         <section className={styles['login-register-section']}>
@@ -42,7 +46,7 @@ export const Login = () => {
                     id="email"
                     // name="email"
                     name={LoginFormKeys.Email}
-                    onChange={onChange}
+                    onChange={inputChangeHandler}
                     // value={values.email}
                     value={values[LoginFormKeys.Email]}
                     className={styles['login-form-input']}
@@ -62,7 +66,7 @@ export const Login = () => {
                     id="password"
                     // name="password"
                     name={LoginFormKeys.Password}
-                    onChange={onChange}
+                    onChange={inputChangeHandler}
                     // value={values.password}
                     value={values[LoginFormKeys.Password]}
                     className={styles['login-form-input']}
@@ -70,6 +74,7 @@ export const Login = () => {
                     required autoComplete="password"
                 />
                 <br />
+                {getErrorMsg() && <p className={styles['login-error-msg']}>{getErrorMsg()}</p>}
 
                 <input type="submit" defaultValue="Log in" className={styles['login-form-button']} />
             </form>

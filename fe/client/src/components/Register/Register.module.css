@@ -89,3 +89,11 @@
     right: -156px;
     bottom: -41px
 }
+
+.login-error-msg {
+    color: darkred;
+    position: static;
+    font-size: 14px;
+    margin: 10px;
+    text-transform: uppercase;
+}

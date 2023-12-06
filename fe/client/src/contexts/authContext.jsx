@@ -12,6 +12,7 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [auth, setAuth] = usePersistedState('auth', {});
+    const [errorMsg, setErrorMsg] = useState(null);
     // const [auth, setAuth] = useState(()=> {
     //     // initial function to delete token , return empty object
     //     localStorage.removeItem("accessToken");
@@ -26,7 +27,8 @@ export const AuthProvider = ({
             localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
             navigate(Path.Home);
         } catch (err) {
-            console.error(err)
+            console.error("Login failed:", err.message);
+            setErrorMsg('Please check your data!');
         }
     };
 
@@ -36,9 +38,11 @@ export const AuthProvider = ({
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
             navigate(Path.Home);
+
+        
         } catch (err) {
-            console.error(err)
-            // throw err;
+            console.error("Registration failed:", err.message);
+            setErrorMsg('Please check your data!');
         }
     };
 
@@ -51,6 +55,9 @@ export const AuthProvider = ({
         //ако не бъде отново добавен в локалното съхранение.
     };
 
+    const getErrorMsg = () => errorMsg;
+    const clearErrorMsg = () => setErrorMsg(null);
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
@@ -60,6 +67,9 @@ export const AuthProvider = ({
         email: auth?.email || null,
         userId: auth?._id || null,
         isAuthenticated: !!auth.accessToken,
+
+        getErrorMsg,
+        clearErrorMsg,
     };
 
     return (
