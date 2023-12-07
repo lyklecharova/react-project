@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { useFormHooks } from '../../hooks/useFormHook';
 import styles from './Login.module.css';
@@ -27,6 +27,9 @@ export const Login = () => {
         [LoginFormKeys.Password]: ''
     });
 
+    useEffect(()=>{
+    clearErrorMsg();
+    }, []);
     const inputChangeHandler = (e) => {
         clearErrorMsg();
         onChange(e);

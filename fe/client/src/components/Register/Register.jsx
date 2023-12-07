@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUnlock } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +23,10 @@ export const Register = () => {
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
     });
+
+    useEffect(() => {
+        clearErrorMsg();
+    }, []);
 
     const inputChangeHandler = (e) => {
         clearErrorMsg();
