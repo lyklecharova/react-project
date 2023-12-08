@@ -15,15 +15,13 @@ export const edit = async (userId, updatedUserData) => {
 };
 
 export const login = async (email, password) => {
-  try {
-    const result = await request.post(`${baseUrl}/login`, {
-      email,
-      password,
-    });
-    return result;
-  } catch (err) {
-    console.log(err)
-  }
+
+  const result = await request.post(`${baseUrl}/login`, {
+    email,
+    password,
+  });
+  return result;
+
 };
 
 export const register = async (email, password) => {
