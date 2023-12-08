@@ -12,8 +12,9 @@
     justify-content: space-around;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.508);
+    background-color: rgba(0, 0, 0, 0.555);
     z-index: 1;
+    backdrop-filter: blur(20px);
 }
 
 .list {
