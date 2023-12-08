@@ -12,7 +12,8 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [auth, setAuth] = usePersistedState('auth', {});
-    const [errorMsg, setErrorMsg] = useState(null);
+    const [errorMsgLogin, setErrorMsgLogin] = useState(null);
+    const [errorMsgRegister, setErrorMsgRegister] = useState(null);
     // const [auth, setAuth] = useState(()=> {
     //     // initial function to delete token , return empty object
     //     localStorage.removeItem("accessToken");
@@ -28,7 +29,7 @@ export const AuthProvider = ({
             navigate(Path.Home);
         } catch (err) {
             console.error("Login failed:", err.message);
-            setErrorMsg('Please check your data!');
+            setErrorMsgLogin('Please check your data!');
         }
     };
 
@@ -39,10 +40,10 @@ export const AuthProvider = ({
             localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
             navigate(Path.Home);
 
-        
+
         } catch (err) {
             console.error("Registration failed:", err.message);
-            setErrorMsg('Please check your data!');
+            setErrorMsgRegister('Please check your data!');
         }
     };
 
@@ -55,8 +56,11 @@ export const AuthProvider = ({
         //ако не бъде отново добавен в локалното съхранение.
     };
 
-    const getErrorMsg = () => errorMsg;
-    const clearErrorMsg = () => setErrorMsg(null);
+    const getErrorMsgLogin = () => errorMsgLogin;
+    const clearErrorMsgLogin = () => setErrorMsgLogin(null);
+
+    const getErrorMsgRegister = () => errorMsgRegister;
+    const clearErrorMsgRegister = () => setErrorMsgRegister(null);
 
     const values = {
         loginSubmitHandler,
@@ -68,8 +72,11 @@ export const AuthProvider = ({
         userId: auth?._id || null,
         isAuthenticated: !!auth.accessToken,
 
-        getErrorMsg,
-        clearErrorMsg,
+        getErrorMsgLogin,
+        clearErrorMsgLogin,
+
+        getErrorMsgRegister,
+        clearErrorMsgRegister,
     };
 
     return (

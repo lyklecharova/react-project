@@ -15,7 +15,7 @@ const LoginFormKeys = {
 
 export const Login = () => {
 
-    const { loginSubmitHandler, getErrorMsg, clearErrorMsg } = useContext(AuthContext);
+    const { loginSubmitHandler, getErrorMsgLogin, clearErrorMsgLogin } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useFormHooks(loginSubmitHandler, {
         // values -> стойностите на формата
         // onChange, onSubmit -> идват от useFormHooks
@@ -27,11 +27,11 @@ export const Login = () => {
         [LoginFormKeys.Password]: ''
     });
 
-    useEffect(()=>{
-    clearErrorMsg();
-    }, []);
+    // useEffect(()=>{
+    // clearErrorMsg();
+    // }, []);
     const inputChangeHandler = (e) => {
-        clearErrorMsg();
+        clearErrorMsgLogin();
         onChange(e);
     };
 
@@ -77,7 +77,7 @@ export const Login = () => {
                     required autoComplete="password"
                 />
                 <br />
-                {getErrorMsg() && <p className={styles['login-error-msg']}>{getErrorMsg()}</p>}
+                {getErrorMsgLogin() && <p className={styles['login-error-msg']}>{getErrorMsgLogin()}</p>}
 
                 <input type="submit" defaultValue="Log in" className={styles['login-form-button']} />
             </form>

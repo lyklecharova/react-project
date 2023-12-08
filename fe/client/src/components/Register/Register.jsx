@@ -17,19 +17,19 @@ const RegisterFormKeys = {
 };
 
 export const Register = () => {
-    const { registerSubmitHandler, getErrorMsg, clearErrorMsg } = useContext(AuthContext);
+    const { registerSubmitHandler, getErrorMsgRegister, clearErrorMsgRegister } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useFormHooks(registerSubmitHandler, {
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
     });
 
-    useEffect(() => {
-        clearErrorMsg();
-    }, []);
+    // useEffect(() => {
+    //     clearErrorMsg();
+    // }, []);
 
     const inputChangeHandler = (e) => {
-        clearErrorMsg();
+        clearErrorMsgRegister();
         onChange(e);
     };
 
@@ -93,7 +93,7 @@ export const Register = () => {
                 />
                 <br />
 
-                {getErrorMsg() && <p className={styles['login-error-msg']}>{getErrorMsg()}</p>}
+                {getErrorMsgRegister() && <p className={styles['login-error-msg']}>{getErrorMsgRegister()}</p>}
 
                 <input type="submit" defaultValue="Registration" className={styles['login-form-button']} />
             </form>
