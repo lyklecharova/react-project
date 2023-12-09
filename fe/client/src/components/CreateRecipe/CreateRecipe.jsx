@@ -15,6 +15,9 @@ export const CreateRecipe = () => {
     ingredients: '',
   });
 
+  const [recipeErr, setRecipeErr] = useState({});
+  const currentErr = {};
+
   const onChangeHanlder = (e) => {
     const { name, value } = e.target;
     setRecipes((recipe) => ({
@@ -25,17 +28,31 @@ export const CreateRecipe = () => {
   };
   const createRecipeSubmitHandler = async (e) => {
     e.preventDefault();
-
-    const recipeData = Object.fromEntries(new FormData(e.currentTarget));
-    try {
-      await recipeService.create(recipeData);
-
-      navigate('/dashboard');
-    } catch (error) {
-      // Error notification
-      console.log(error);
+    if (recipes.image === '') {
+      currentErr.imageErr = 'Please upload image url';
+    }
+    if (recipes.title === '') {
+      currentErr.titleErr = 'Please enter title';
+    }
+    if (recipes.description === '') {
+      currentErr.descriptionErr = 'Please enter description';
+    }
+    if (recipes.ingredients === '') {
+      currentErr.ingredientsErr = 'Please enter ingredients';
     }
 
+    setRecipeErr(currentErr)
+    if (Object.keys(currentErr).length === 0) {
+      const recipeData = Object.fromEntries(new FormData(e.currentTarget));
+      try {
+        await recipeService.create(recipeData);
+
+        navigate('/dashboard');
+      } catch (error) {
+        // Error notification
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -55,6 +72,9 @@ export const CreateRecipe = () => {
 
           />
         </div>
+        {recipeErr.imageErr && (
+          <p className={styles['err-msg-recipe']}>{recipeErr.imageErr}</p>
+        )}
         <div>
           <label htmlFor="title" className={styles["create-recipe-label"]}>
             Title
@@ -68,6 +88,9 @@ export const CreateRecipe = () => {
             className={styles["create-recipe-input"]}
           />
         </div>
+        {recipeErr.titleErr && (
+          <p className={styles['err-msg-recipe']}>{recipeErr.titleErr}</p>
+        )}
 
         <div>
           <label
@@ -86,6 +109,9 @@ export const CreateRecipe = () => {
             className={styles["create-recipe-textarea"]}
           />
         </div>
+        {recipeErr.descriptionErrErr && (
+          <p className={styles['err-msg-recipe']}>{recipeErr.descriptionErr}</p>
+        )}
 
         <div>
           <label
@@ -104,6 +130,9 @@ export const CreateRecipe = () => {
             className={styles["create-recipe-textarea"]}
           />
         </div>
+        {recipeErr.ingredientsErr && (
+          <p className={styles['err-msg-recipe']}>{recipeErr.ingredientsErr}</p>
+        )}
 
         <button className={styles["create-recipe-button"]}>Create</button>
       </form>
