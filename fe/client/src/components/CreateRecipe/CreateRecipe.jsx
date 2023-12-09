@@ -28,16 +28,16 @@ export const CreateRecipe = () => {
   };
   const createRecipeSubmitHandler = async (e) => {
     e.preventDefault();
-    if (recipes.image === '') {
+    if (recipes.image.trim() === '') {
       currentErr.imageErr = 'Please upload image url';
     }
-    if (recipes.title === '') {
+    if (recipes.title.trim() === '') {
       currentErr.titleErr = 'Please enter title';
     }
-    if (recipes.description === '') {
+    if (recipes.description.trim() === '') {
       currentErr.descriptionErr = 'Please enter description';
     }
-    if (recipes.ingredients === '') {
+    if (recipes.ingredients.trim() === '') {
       currentErr.ingredientsErr = 'Please enter ingredients';
     }
 
@@ -109,7 +109,7 @@ export const CreateRecipe = () => {
             className={styles["create-recipe-textarea"]}
           />
         </div>
-        {recipeErr.descriptionErrErr && (
+        {recipeErr.descriptionErr && (
           <p className={styles['err-msg-recipe']}>{recipeErr.descriptionErr}</p>
         )}
 
