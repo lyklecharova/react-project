@@ -18,7 +18,7 @@ const recipeOptions = (data) => {
 };
 const request = async (method, url, data) => {
     const response = await fetch(url, {
-        ...recipeOptions(data),
+        ...recipeOptions(data), // взима цялата дата и проверя дали  я има и ако е true, слага го в options.body
         method,
     });
 
@@ -36,6 +36,8 @@ const request = async (method, url, data) => {
 };
 
 export const get = request.bind(null, 'GET');
+//bind копира функцията
+// null маха this, който идва от самата функция.
 export const post = request.bind(null, 'POST');
 export const put = request.bind(null, 'PUT');
 export const patch = request.bind(null, 'PATCH');

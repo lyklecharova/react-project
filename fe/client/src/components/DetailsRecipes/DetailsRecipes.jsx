@@ -14,7 +14,7 @@ export const DetailsRecipes = () => {
   const navigate = useNavigate();
   const { email, userId, isAuthenticated } = useContext(AuthContext);
   const [recipe, setRecipe] = useState({});
-  const [comments, dispatch] = useReducer(reducer, []);
+  const [comments, dispatch] = useReducer(reducer, []); // Редюсърът е чиста функция, която приема текущото състояние и действието и връща ново състояние.
   const { recipeId } = useParams();
 
   useEffect(() => {
