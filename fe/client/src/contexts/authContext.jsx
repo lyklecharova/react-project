@@ -27,22 +27,33 @@ export const AuthProvider = ({
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
             navigate(Path.Home);
-        } catch (err) {
-            console.error("Login failed:", err.message);
+        } catch (error) {
+            console.error("Login failed:", error.message);
             setErrorMsgLogin('Please check your data!');
         }
     };
 
     const registerSubmitHandler = async (values) => {
+        const emailHandler = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/;
+        //[a-zA-Z0-9._-]+: Позволява букви (главни и малки), цифри, точки, подчертавки и тирета. + означава, че трябва да има поне една или повече от тези символи.
+        // [a-zA-Z0-9.-]+: Позволява букви (главни и малки), цифри, точки и тирета за домейн (след "@").
+        // \.: Изисква точка след домейна.
+        // [a-zA-Z]{2,4}: Изисква от две до четири букви (главни и/или малки) за топ-левел домейн (например, .com, .net).
+        // $: Завършва се на края на низа.
         try {
+            if (!emailHandler.test(values.email)) {
+                setErrorMsgRegister("Wrong data input!");
+                return; // Stop registration if email is not valid
+            };
+
             const result = await authService.register(values.email, values.password);
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken); // запазва стойността на result.accessToken в localStorage в  уеб браузъра
             navigate(Path.Home);
 
 
-        } catch (err) {
-            console.error("Registration failed:", err.message);
+        } catch (error) {
+            console.error("Registration failed:", error.message);
             setErrorMsgRegister('Please check your data!');
         }
     };

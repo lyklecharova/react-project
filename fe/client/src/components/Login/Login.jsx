@@ -6,6 +6,7 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import { useFormHooks } from '../../hooks/useFormHook';
 import styles from './Login.module.css';
+import { Navigate } from 'react-router-dom';
 
 
 const LoginFormKeys = {
@@ -14,6 +15,11 @@ const LoginFormKeys = {
 };
 
 export const Login = () => {
+    const {isAuthenticated} = useContext(AuthContext);
+    if(isAuthenticated){
+        return <Navigate to="/"/>
+    }
+
 
     const { loginSubmitHandler, getErrorMsgLogin, clearErrorMsgLogin } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useFormHooks(loginSubmitHandler, {

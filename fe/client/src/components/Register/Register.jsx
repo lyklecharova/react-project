@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUnlock } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,10 @@ const RegisterFormKeys = {
 };
 
 export const Register = () => {
+    const {isAuthenticated} = useContext(AuthContext);
+    if(isAuthenticated){
+        return <Navigate to="/"/>
+    }
     const { registerSubmitHandler, getErrorMsgRegister, clearErrorMsgRegister } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useFormHooks(registerSubmitHandler, {
         [RegisterFormKeys.Email]: '',
