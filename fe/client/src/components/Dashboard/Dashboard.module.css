@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
 }
 
 .container-dashboard:before {
@@ -101,4 +102,35 @@
     font-size: 2em;
     text-align: center;
     color: orange
+}
+
+.pagination {
+    position: absolute;
+    bottom: 150px;
+    list-style: none;
+    padding: 0;
+    /* margin-bottom: -392px; */
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    background-color: #ffffffbc;
+    font-size: 20px;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    align-items: center;
+}
+
+
+.pagination button:hover {
+    background-color: #fff;
+}
+
+.pagination button.active {
+    background-color: #fff;
 }
