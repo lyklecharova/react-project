@@ -137,3 +137,12 @@
 .create-recipe-button:hover {
     background-color: #0056b3;
 }
+
+.err-msg-recipe {
+    font-weight: bold;
+    color: darkred;
+    position: static;
+    font-size: 14px;
+    margin: 10px;
+    text-transform: uppercase;
+}

@@ -91,6 +91,7 @@
 }
 
 .login-error-msg {
+    font-weight: bold;
     color: darkred;
     position: static;
     font-size: 14px;
