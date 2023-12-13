@@ -8,7 +8,7 @@ import { pathToUrl } from "../../utils/pathUtils";
 import { Path } from "../../paths";
 import { reducer } from "./commentReducer";
 import { AuthContext } from "../../contexts/authContext";
-import { useFormHooks } from "../../hooks/useFormHook";
+import { useFormHooks } from "../hooks/useFormHook";
 
 export const DetailsRecipes = () => {
   const navigate = useNavigate();
