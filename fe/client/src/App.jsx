@@ -16,17 +16,14 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 import { Logout } from "./components/Logout/Logout";
 import AuthGuard from "./components/guards/AuthGuard";
-// import ErrorBoundary from "./components/ErrorBoundary";
-
-
 function App() {
   return (
-    // <ErrorBoundary>
+    
     <AuthProvider>
       <Header />
       <main>
         <Routes>
-          <Route path={Path.Home} element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/recipes/:recipeId" element={<DetailsRecipes />} />
           <Route path="/login" element={<Login />} />
@@ -35,15 +32,15 @@ function App() {
 
           <Route element={<AuthGuard />}>
             <Route path="/recipes/create" element={<CreateRecipe />} />
-            <Route path={Path.RecipeEdit} element={<EditRecipe />} />
-            <Route path={Path.Logout} element={<Logout />} />
+            <Route path='/recipes/:recipeId/edit' element={<EditRecipe />} />
+            <Route path='/logout' element={<Logout />} />
           </Route>
 
         </Routes>
       </main>
       <Footer />
     </AuthProvider>
-    // </ErrorBoundary>
+  
 
   )
 }
