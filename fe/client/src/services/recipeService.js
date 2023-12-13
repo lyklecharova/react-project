@@ -13,13 +13,16 @@ export const getOne = async (recipeId) => {
 };
 
 export const getLatestRecipes = async () => {
-    const query = new URLSearchParams({
-        offset: 0,
-        pageSize: 3,
-    });
 
-    const result = await request.get(`${baseUrl}?${query}`);
-    return result;
+    const result = await request.get(`${baseUrl}`);
+    function compareByTime(a, b) {
+
+        return b._createdOn - a._createdOn;
+    }
+    const latestRecipe = result.sort(compareByTime);
+    
+    const sortedRecipe = latestRecipe.splice(0, 3)
+    return sortedRecipe
 }
 
 export const create = async (recipeData) => {
