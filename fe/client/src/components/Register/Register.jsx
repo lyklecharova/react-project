@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,30 +8,47 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 import { AuthContext } from '../../contexts/authContext';
-import { useFormHooks } from '../../hooks/useFormHook';
+
 import styles from './Register.module.css';
-
-const RegisterFormKeys = {
-    Email: 'email',
-    Password: 'password',
-    ConfirmPassword: 'confirmPassword'
-};
-
 export const Register = () => {
-    const {isAuthenticated} = useContext(AuthContext);
-    if(isAuthenticated){
-        return <Navigate to="/"/>
+    const { isAuthenticated, registerSubmitHandler, getErrorMsgRegister, clearErrorMsgRegister  } = useContext(AuthContext);
+    if (isAuthenticated) {
+        return <Navigate to="/" />
     }
-    const { registerSubmitHandler, getErrorMsgRegister, clearErrorMsgRegister } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useFormHooks(registerSubmitHandler, {
-        [RegisterFormKeys.Email]: '',
-        [RegisterFormKeys.Password]: '',
-        [RegisterFormKeys.ConfirmPassword]: '',
+
+    const [register, setRegister] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
     });
 
-    // useEffect(() => {
-    //     clearErrorMsg();
-    // }, []);
+    
+
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setRegister((register) => ({
+            ...register,
+            [name]: value,
+        }));
+    };
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            // Call the registration submit handler from the AuthContext
+            await registerSubmitHandler(register);
+            // If registration is successful, clear any previous registration errors
+            
+        } catch (error) {
+            console.error('Registration failed:', error.message);
+        }
+
+    }
+    useEffect(()=>{
+        clearErrorMsgRegister();
+    }, []);
 
     const inputChangeHandler = (e) => {
         clearErrorMsgRegister();
@@ -40,7 +57,7 @@ export const Register = () => {
 
     return (
         <section className={styles['login-register-section']}>
-            <form onSubmit={onSubmit} action="submit.php" method="post" className={styles['login-register-form']}>
+            <form onSubmit={onSubmitHandler} action="submit.php" method="post" className={styles['login-register-form']}>
 
                 <label htmlFor="email" className={styles['login-form-label']}>Email</label>
 
@@ -52,7 +69,7 @@ export const Register = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={values[RegisterFormKeys.Email]}
+                    value={register.email}
                     onChange={inputChangeHandler}
                     className={styles['login-form-input']}
                     placeholder="Email"
@@ -70,7 +87,7 @@ export const Register = () => {
                 <input type="password"
                     id="password"
                     name="password"
-                    value={values[RegisterFormKeys.Password]}
+                    value={register.password}
                     onChange={inputChangeHandler}
                     className={styles['login-form-input']}
                     placeholder="Password"
@@ -89,7 +106,7 @@ export const Register = () => {
                     type="password"
                     id="confirmPassword"
                     name="confirmPassword"
-                    value={values[RegisterFormKeys.ConfirmPassword]}
+                    value={register.confirmPassword}
                     onChange={inputChangeHandler}
                     className={styles['login-form-input']}
                     placeholder="Confirm Password"

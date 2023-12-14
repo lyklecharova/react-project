@@ -2,48 +2,58 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
-import { useFormHooks } from '../../hooks/useFormHook';
+
 import styles from './Login.module.css';
 import { Navigate } from 'react-router-dom';
 
 
-const LoginFormKeys = {
-    Email: 'email',
-    Password: 'password'
-};
+
 
 export const Login = () => {
-    const {isAuthenticated} = useContext(AuthContext);
-    if(isAuthenticated){
-        return <Navigate to="/"/>
+    const { isAuthenticated, getErrorMsgLogin, clearErrorMsgLogin, loginSubmitHandler } = useContext(AuthContext);
+    if (isAuthenticated) {
+        return <Navigate to="/" />
     }
 
-
-    const { loginSubmitHandler, getErrorMsgLogin, clearErrorMsgLogin } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useFormHooks(loginSubmitHandler, {
-        // values -> стойностите на формата
-        // onChange, onSubmit -> идват от useFormHooks
-
-        // email: '',
-        // password: '',
-
-        [LoginFormKeys.Email]: '',
-        [LoginFormKeys.Password]: ''
+    const [login, setLogin] = useState({
+        email: '',
+        password: '',
     });
 
-    // useEffect(()=>{
-    // clearErrorMsg();
-    // }, []);
-    const inputChangeHandler = (e) => {
+   
+
+    const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        setLogin((login) => ({
+            ...login,
+            [name]: value,
+        }));
+    };
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        try {
+            await loginSubmitHandler(login);
+        } catch (error) {
+            console.error('Login failed:', error.message);
+            
+        }
+    };
+
+
+   
+    useEffect(() => {
         clearErrorMsgLogin();
-        onChange(e);
+    }, []);
+    const inputChangeHandler = (e) => {
+        onChangeHandler(e);
     };
 
     return (
         <section className={styles['login-register-section']}>
-            <form onSubmit={onSubmit} action="submit.php" method="post" className={styles['login-register-form']} >
+            <form onSubmit={onSubmitHandler} action="submit.php" method="post" className={styles['login-register-form']} >
                 <label htmlFor="email" className={styles['login-form-label']}>Email</label>
 
                 <div className={styles['input-container']}>
@@ -53,11 +63,11 @@ export const Login = () => {
                 <input
                     type="text"
                     id="email"
-                    // name="email"
-                    name={LoginFormKeys.Email}
+                    name="email"
+                    
                     onChange={inputChangeHandler}
-                    // value={values.email}
-                    value={values[LoginFormKeys.Email]}
+                    value={login.email}
+                   
                     className={styles['login-form-input']}
                     placeholder="Email..."
                     required autoComplete="email"
@@ -73,11 +83,10 @@ export const Login = () => {
                 <input
                     type="password"
                     id="password"
-                    // name="password"
-                    name={LoginFormKeys.Password}
+                    name="password"
+                    
                     onChange={inputChangeHandler}
-                    // value={values.password}
-                    value={values[LoginFormKeys.Password]}
+                    value={login.password}
                     className={styles['login-form-input']}
                     placeholder="Password..."
                     required autoComplete="password"
