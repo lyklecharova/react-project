@@ -7,7 +7,6 @@ export const getAll = async (recipeId) => {
         where: `recipeId="${recipeId}"`,
         load: `owner=_ownerId:users`,
     });
-
     const result = await request.get(`${baseUrl}?${query}`);
 
     return result;
@@ -38,5 +37,27 @@ export const delComment = async (commentId) => {
     }
 
     return deletedComment.json();
+};
+
+
+
+export const editComment = async (recipeId,commentId, newText) => {
+    const token = localStorage.getItem("accessToken");
+    const editedComment = await fetch(`${baseUrl}/${commentId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Authorization": token,
+        },
+        
+        body: JSON.stringify({ text: newText, recipeId }),
+    });
+
+    if (!editedComment.ok) {
+        const error = await editedComment.json();
+        throw new Error(`Error editing comment: ${error.message}`);
+    }
+
+    return editedComment.json();
 };
 
