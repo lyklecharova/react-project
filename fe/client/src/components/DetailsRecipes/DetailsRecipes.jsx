@@ -95,8 +95,8 @@ export const DetailsRecipes = () => {
 
       if (hasConfirmedEditComment) {
         // prompt е функцията за въвеждане на текст
-        //The reload() method reloads the current document
-        //The reload() method does the same as the reload button in your browser
+        // The prompt() method displays a dialog box that prompts the user for input
+        // The prompt() method returns the input value if the user clicks "OK", otherwise it returns null
         const newCommentText = prompt("Enter the new comment:");
         if (newCommentText !== null) {
           const editedComment = await recipeCommentsService.editComment(recipeId, commentId, newCommentText);
@@ -105,7 +105,9 @@ export const DetailsRecipes = () => {
             payload: { commentId, newCommentText },
           });
           //Обектът window.location представлява информация за текущия URL на уеб страницата.
-          // reload() методът се използва, за да презареди уеб страницата. Този метод може да бъде извикан без аргументи или с един аргумент.
+          // reload() методът се използва, за да презареди уеб страницата. Този метод може да бъде извикан без аргументи или с един аргумент
+          //The reload() method reloads the current document
+          //The reload() method does the same as the reload button in your browser
           window.location.reload(true);
           return editedComment;
         }
