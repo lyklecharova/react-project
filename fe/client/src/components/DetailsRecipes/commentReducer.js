@@ -11,7 +11,12 @@ export const reducer = (state, action) => {
             // Когато се получи действие за редактиране на коментар, 
             //този ред в reducer използва функцията map, за да създаде нов масив от коментари, 
             //където текстът на коментар със съответното _id се заменя с новия текст от действието за редактиране.
+            if (!action.payload._id) {
+                console.error('Missing comment _id for editing.');
+                return state;
+            }
             return state.map(c => c._id === action.payload._id ? { ...c, text: action.payload.text } : c);
+
         case 'DELETE_COMMENT':
             // използва се filter, за да създаде нов масив от коментари, 
             //включващ само тези, чийто _id не съвпада с _id в действието за изтриване (action.payload), 

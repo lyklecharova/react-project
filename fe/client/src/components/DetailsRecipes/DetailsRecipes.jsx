@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useReducer, useState, useMemo } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 
 import styles from "./DetailsRecipes.module.css";
 import * as recipeService from "../../services/recipeService";
@@ -8,13 +8,17 @@ import { pathToUrl } from "../../utils/pathUtils";
 import { Path } from "../../paths";
 import { reducer } from "./commentReducer";
 import { AuthContext } from "../../contexts/authContext";
-import { useFormHooks } from "../hooks/useFormHook";
+import { useFormHooks } from "../../hooks/useFormHook";
 
 export const DetailsRecipes = () => {
   const navigate = useNavigate();
   const { email, userId, isAuthenticated } = useContext(AuthContext);
   const [recipe, setRecipe] = useState({});
-  const [comments, dispatch] = useReducer(reducer, []); // Редюсърът е чиста функция, която приема текущото състояние и действието и връща ново състояние.
+  // Редюсърът е чиста функция, която приема текущото състояние и действието и връща ново състояние.
+  // comments представлява текущото състояние на коментарите и е инициализирано с празен масив ([]).
+  // dispatch е функцията, която се използва за изпращане на действия (actions) към reducer. 
+  //Тя ще актуализира comments в съответствие с логиката, дефинирана в reducer.
+  const [comments, dispatch] = useReducer(reducer, []);
   const { recipeId } = useParams();
 
   useEffect(() => {
@@ -58,7 +62,6 @@ export const DetailsRecipes = () => {
     }
   };
 
-
   const deleteCommentButtonOnClick = async (commentId) => {
     try {
       const hasConfirmedDeleteComment = confirm(
@@ -82,36 +85,53 @@ export const DetailsRecipes = () => {
       console.error("Error deleting comment:", error);
       throw Error(error);
     }
-
   };
 
+  const editCommentButtonOnClick = async (commentId, recipeId) => {
+    try {
+      const hasConfirmedEditComment = confirm(
+        `Are you sure you want to edit this comment?`
+      );
 
+      if (hasConfirmedEditComment) {
+        // prompt е функцията за въвеждане на текст
+        //The reload() method reloads the current document
+        //The reload() method does the same as the reload button in your browser
+        const newCommentText = prompt("Enter the new comment:");
+        if (newCommentText !== null) {
+          const editedComment = await recipeCommentsService.editComment(recipeId, commentId, newCommentText);
+          dispatch({
+            type: "EDIT_COMMENT",
+            payload: { commentId, newCommentText },
+          });
+          //Обектът window.location представлява информация за текущия URL на уеб страницата.
+          // reload() методът се използва, за да презареди уеб страницата. Този метод може да бъде извикан без аргументи или с един аргумент.
+          window.location.reload(true);
+          return editedComment;
+        }
 
-  // // TODO: temp solution for form reinitialization
-  // const initialValues = useMemo(() => ({
-  //   // useMemo -> Позволява да изпълни функция, чийто отговор ще бъде запазен като референция
-  //   comment: '',
-  // }), []) // [] -> dependency array
+      }
+    } catch (error) {
+      console.error("Error editing comment:", error);
+      throw Error(error);
+    }
+  };
 
   const { values, onChange, onSubmit } = useFormHooks(addCommentHandler, {
     comment: "",
   });
 
-  // if(Math.random() < 0.5){
-  //   throw new Error('Recipe details error!')
-  // }
-
   function parseIngridients(ingredients) {
     // console.log(ingredients);
     if (typeof ingredients === 'object' && typeof ingredients !== "string") {
+      // /\\r?\\n/ се използва за съвпадение с нов ред в текст,
       ingredients = ingredients[0].trim().split(/\r?\n/)
     }
 
     if (typeof ingredients === "string" && ingredients.trim() !== "") {
+      // \n е символ за нов ред 
       ingredients = ingredients.trim().split(/\n/);
     }
-
-
     return ingredients;
   }
 
@@ -150,9 +170,6 @@ export const DetailsRecipes = () => {
           {userId === recipe._ownerId && (
             <div className={styles["raw"]}>
               <Link to={pathToUrl(Path.RecipeEdit, { recipeId })} className={styles["link-style"]}>Edit Recipe</Link>
-              {/* <Link to={pathToUrl(Path.RecipeDelete, { recipeId })} className={styles['link-style']}>
-                Delete Recipe
-              </Link> */}
               <button className={styles["link-style"]} onClick={deleteButtonClickHandler}>Delete Recipe</button>
             </div>
           )}
@@ -170,7 +187,11 @@ export const DetailsRecipes = () => {
                 </p>
 
                 {_ownerId === userId && (
-                  <button onClick={() => deleteCommentButtonOnClick(_id)} className={styles["delete-comment-button"]} >Delete Comment</button>
+                  <>
+                    <button onClick={() => editCommentButtonOnClick(_id, recipeId)} className={styles["edit-comment-button"]} >Edit Comment</button>
+                    <button onClick={() => deleteCommentButtonOnClick(_id)} className={styles["delete-comment-button"]} >Delete Comment</button>
+                  </>
+
                 )}
               </li>
             ))}
@@ -197,7 +218,7 @@ export const DetailsRecipes = () => {
             </button>
           </form>
         )}
-        {!isAuthenticated && <div> Please login to comment </div>}
+        {!isAuthenticated && <div> <Link to={"/login"} className={styles['comment-link']}>Please login to comment </Link></div>}
       </div>
     </div>
   );
