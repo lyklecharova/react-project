@@ -25,7 +25,7 @@
   margin: 100px;
 }
 
-.dashboard-img-details{
+.dashboard-img-details {
   width: 750px;
   height: 750px;
   background-position: center;
@@ -53,7 +53,7 @@
   color: #333;
   font-size: 14px;
   overflow-wrap: anywhere;
- 
+
 
 }
 
@@ -94,12 +94,13 @@
   opacity: 0.5;
 }
 
-.list-item>li{
+.list-item>li {
   display: flex;
   background-color: aqua;
   flex-direction: row;
 }
-.recipe-detail-ingedients{
+
+.recipe-detail-ingedients {
   display: flex;
   flex-direction: column;
   background-color: rgb(234, 221, 213);
@@ -107,7 +108,7 @@
 }
 
 /* Comments */
-.form-input{
+.form-input {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +120,7 @@
 }
 
 .create-comment-textarea {
-  
+
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -127,7 +128,7 @@
   width: 300px;
   margin-top: 20px;
   /* margin: 0 20px; */
-  
+
 }
 
 .create-comment-button {
@@ -183,24 +184,37 @@
   margin-top: 10px;
 }
 
-.comments-info{
- display: flex;
- flex-direction: column-reverse;
- align-items: center;
- justify-content: space-evenly;
- min-height: 500px;
+.comments-info {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 500px;
 }
 
-.delete-comment-button{
-  padding: 10px 20px;
+.delete-comment-button,
+.edit-comment-button {
+  padding: 5px 5px;
   background-color: orange;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
   font-size: 16px;
-  margin:12px;
+  margin: 12px;
 }
 
-.delete-comment-button:hover {
+.delete-comment-button:hover,
+.edit-comment-button:hover {
   background-color: #0056b3;
+}
+
+.comment-link{
+  color: #E25822;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+.comment-link:hover{
+  background-color: #F8CA8D;
+  color: #333;
 }
