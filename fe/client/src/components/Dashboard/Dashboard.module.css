@@ -1,8 +1,10 @@
 .container-dashboard {
+
     background-color: rgba(0, 0, 0, 0.591);
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    gap:50px;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -87,6 +89,10 @@
     font-size: 16px;
     margin-bottom: 5px;
     width: 90%;
+    /* text-decoration: none; */
+}
+.dashboard-link{
+    text-decoration: none;
 }
 
 .dashboard-button:hover {
