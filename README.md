@@ -21,7 +21,7 @@ Single Page Application (SPA) created for recipes using React for the Frontend (
 
 Technologies used in the project:
 <ul>
-<li>HTML CSS and JavaScript
+<li>HTML, CSS and JavaScript
 <li>React</li>
 <li>Using Font Awesome for icons</li>
 </ul>
