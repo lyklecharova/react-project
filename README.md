@@ -17,13 +17,14 @@ Single Page Application (SPA) created for recipes using React for the Frontend (
 <p align="center"><img src="https://github.com/lyklecharova/react-project/blob/main/fe/client/public/image/readmeImages/latest-recipe.png" alt="latest-recipe-page-project-screenshot" width="960" height="540/"></p>
 <p align="center"><img src="https://github.com/lyklecharova/react-project/blob/main/fe/client/public/image/readmeImages/error-page.png" alt="error-page-project-screenshot" width="960" height="540/"></p>
 
-
-
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
-*   HTML CSS JavaScript
-*   React
+<ul>
+<li>HTML CSS and JavaScript
+<li>React</li>
+<li>Using Font Awesome for icons</li>
+</ul>
 
 # General Requirements:
 
