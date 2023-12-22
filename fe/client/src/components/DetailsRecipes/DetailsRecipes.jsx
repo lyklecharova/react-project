@@ -34,6 +34,12 @@ export const DetailsRecipes = () => {
 
   const addCommentHandler = async (values) => {
     try {
+      if (!values.comment.trim()) {
+        console.log("Fill the comment");
+        alert("Please enter a non-empty comment.");
+        return;
+      }
+
       const newComment = await recipeCommentsService.create(
         recipeId,
         values.comment
@@ -47,8 +53,8 @@ export const DetailsRecipes = () => {
     } catch (err) {
       console.log(err);
     }
-
   };
+
 
   const deleteButtonClickHandler = async () => {
     const hasConfirmed = confirm(
@@ -88,36 +94,43 @@ export const DetailsRecipes = () => {
   };
 
   const editCommentButtonOnClick = async (commentId, recipeId) => {
+
     try {
       const hasConfirmedEditComment = confirm(
         `Are you sure you want to edit this comment?`
       );
 
       if (hasConfirmedEditComment) {
-        // prompt е функцията за въвеждане на текст
-        // The prompt() method displays a dialog box that prompts the user for input
-        // The prompt() method returns the input value if the user clicks "OK", otherwise it returns null
         const newCommentText = prompt("Enter the new comment:");
-        if (newCommentText !== null) {
-          const editedComment = await recipeCommentsService.editComment(recipeId, commentId, newCommentText);
-          dispatch({
-            type: "EDIT_COMMENT",
-            payload: { commentId, newCommentText },
-          });
-          //Обектът window.location представлява информация за текущия URL на уеб страницата.
-          // reload() методът се използва, за да презареди уеб страницата. Този метод може да бъде извикан без аргументи или с един аргумент
-          //The reload() method reloads the current document
-          //The reload() method does the same as the reload button in your browser
-          window.location.reload(true);
-          return editedComment;
+
+        // Check if the new comment is empty or null
+        if (newCommentText === null || newCommentText.trim() === "") {
+          alert("Please enter a comment.");
+          return;
         }
 
+        const editedComment = await recipeCommentsService.editComment(
+          recipeId,
+          commentId,
+          newCommentText
+        );
+
+        dispatch({
+          type: "EDIT_COMMENT",
+          payload: { commentId, newCommentText },
+        });
+
+        // Reload the page if needed
+        window.location.reload(true);
+
+        return editedComment;
       }
     } catch (error) {
       console.error("Error editing comment:", error);
       throw Error(error);
     }
   };
+
 
   const { values, onChange, onSubmit } = useFormHooks(addCommentHandler, {
     comment: "",
