@@ -1,6 +1,5 @@
 # react-project-recipes
 
-Softuni React Project - Project Defense
 Single Page Application (SPA) created for recipes using React for the Frontend (FE) and softuni-practice-server for the Backend (BE).
 
 <h1 align="center" id="title">LK</h1>
